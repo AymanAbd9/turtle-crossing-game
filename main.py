@@ -26,6 +26,13 @@ while game_is_on:
         if car.distance(player) < 20:
             game_is_on = False
 
+    # Detect if player won 
+    if player.ycor() > 300:
+        player.go_to_start()
+        car_manager.level_up()
+
+        
+
 
 
 screen.mainloop()
