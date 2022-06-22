@@ -26,12 +26,13 @@ while game_is_on:
         if car.distance(player) < 20:
             game_is_on = False
 
-    # Detect if player won 
+    # Detect if player reached the top 
     if player.ycor() > 300:
         player.go_to_start()
         car_manager.level_up()
 
-        
+    # Removing a car when it reaches the left side
+    car_manager.remove_cars()        
 
 
 
