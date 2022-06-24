@@ -9,6 +9,8 @@ screen.setup(width=600, height=600)
 screen.tracer(0)
 player = Player()
 car_manager = CarManager()
+scoreboard = Scoreboard()
+
 
 screen.listen()
 screen.onkey(player.move_up, "Up")
@@ -24,12 +26,15 @@ while game_is_on:
     # Detect if player collides with cars
     for car in car_manager.all_cars:
         if car.distance(player) < 20:
+            scoreboard.game_over()
             game_is_on = False
+
 
     # Detect if player reached the top 
     if player.ycor() > 300:
         player.go_to_start()
         car_manager.level_up()
+        scoreboard.increase_level()
 
     # Removing a car when it reaches the left side
     car_manager.remove_cars()        
